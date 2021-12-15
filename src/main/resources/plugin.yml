@@ -1,0 +1,8 @@
+name: Dupe
+version: '${project.version}'
+main: net.badbird5907.dupe.Dupe
+api-version: 1.13
+authors: [ Badbird5907 ]
+description: simple dupe plugin ez
+commands:
+  dupe:
