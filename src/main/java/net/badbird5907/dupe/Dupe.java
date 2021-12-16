@@ -8,6 +8,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public final class Dupe extends JavaPlugin {
 
     @Override
@@ -20,13 +24,13 @@ public final class Dupe extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
-
+    Set<Material> materials = Arrays.asList(Material.DRAGON_EGG,Material.ENCHANTED_GOLDEN_APPLE,Material.WRITTEN_BOOK).stream().collect(Collectors.toSet());
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player){
             ItemStack itemStack = ((Player) sender).getInventory().getItemInMainHand();
             if (itemStack != null && !itemStack.getType().isAir()){
-                if(itemStack.getType() == Material.ENCHANTED_GOLDEN_APPLE){
+                if(materials.contains(itemStack.getType())){
                     sender.sendMessage(ChatColor.RED + "fuck you");
                     return true;
                 }
